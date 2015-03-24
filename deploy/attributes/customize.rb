@@ -10,4 +10,4 @@
 #
 #normal[:opsworks][:deploy_user][:shell] = '/bin/zsh'
 #normal[:opsworks][:deploy_user][:user] = 'deploy'
-normal[:deploy][application][:deploy_to] = "/var/lib/tomcat7/webapps/#{application}"
+#normal[:deploy][application][:deploy_to] = "/var/lib/tomcat7/webapps/#{application}"
