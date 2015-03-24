@@ -27,6 +27,6 @@ node[:deploy].each do |application, deploy|
 
   Chef::Log.info("Running composer update on #{deploy[:deploy_to]}")
   composer_update do
-    path deploy[:deploy_to]}
+    path deploy[:deploy_to]
   end
 end
