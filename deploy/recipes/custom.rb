@@ -1,5 +1,4 @@
 include_recipe "deploy"
-include_recipe "php5"
 
 node[:deploy].each do |application, deploy|
 
@@ -17,16 +16,7 @@ node[:deploy].each do |application, deploy|
   end
 
   opsworks_deploy do
-    app application
     deploy_data deploy
-  end
-
-  nginx_web_app application do
-    application deploy
-  end
-
-  Chef::Log.info("Running composer update on #{deploy[:deploy_to]}")
-  composer_update do
-    path deploy[:deploy_to]
+    app application
   end
 end
