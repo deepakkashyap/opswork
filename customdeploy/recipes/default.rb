@@ -1,18 +1,10 @@
-#
-# Cookbook Name:: customdeploy
-# Recipe:: default
-#
-# Copyright 2015, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-##recipes/default.rb
 application = node[:deploy][:application_name]
 deploy = node[:deploy][application]
 
 Chef::Log.info "Deploying #{application} using ownlocal_deploy::default"
 
-
 include_recipe "nginx"
+include_recipe "unicorn"
 
 opsworks_deploy_user do
   deploy_data deploy
