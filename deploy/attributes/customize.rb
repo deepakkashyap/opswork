@@ -10,10 +10,8 @@
 #
 #normal[:opsworks][:deploy_user][:shell] = '/bin/zsh'
 #normal[:opsworks][:deploy_user][:user] = 'deploy'
-default[:deploy] = {}
+#default[:deploy][application][:deploy_to] = "/var/lib/tomcat7/webapps/#{application}"
 node[:deploy].each do |application, deploy|
   default[:deploy][application][:deploy_to] = "/var/lib/tomcat7/webapps/#{application}"
   default[:deploy][application][:chef_provider] = node[:deploy][application][:chef_provider] ? node[:deploy][application][:chef_provider] : node[:opsworks][:deploy_chef_provider]
-  unless valid_deploy_chef_providers.include?(node[:deploy][application][:chef_provider])
-    raise "Invalid chef_provider '#{node[:deploy][application][:chef_provider]}' for app '#{application}'. Valid providers: #{valid_deploy_chef_providers.join(', ')}."
   end
